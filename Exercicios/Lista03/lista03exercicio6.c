@@ -6,27 +6,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
-int main(){
-    int num2 = rand() % 6;
-    srand(time(NULL));
+int main() {
     int num1, resultado;
-    int escolha;
-    printf("Par ou Impar?(escreva em minusculo): ");
-    scanf("%i", &escolha);
+    char escolha[10];
 
-    printf("Digite um numero de 0 a 5");
-    scanf("%i", &num1);
+    printf("Par ou Impar? (escreva em minusculo): ");
+    scanf("%s", escolha);
 
-resultado = num1 + num2;
+    printf("Digite um numero de 0 a 5: ");
+    scanf("%d", &num1);
 
-if (resultado % 2 == 0, escolha == "PAR"){
-    printf("Voce venceu");
-}else if (resultado % 2 == 0, escolha == "IMPAR"){
-    printf("Voce perdeu");
-}else if (resultado % 2 != 0, escolha == "IMPAR"){
-    printf("Voce venceu");
-}else (resultado % 2 != 0, escolha == "IMPAR");
-    printf("Voce perdeu");
-return 0;
+    srand(time(NULL));
+    int num2 = rand() % 6;
+
+    resultado = num1 + num2;
+
+    printf("Numero do computador: %d\n", num2);
+    printf("Soma dos numeros: %d\n", resultado);
+
+    if (resultado % 2 == 0) {
+        if (strcmp(escolha, "par") == 0) {
+            printf("Voce venceu!\n");
+        } else {
+            printf("Voce perdeu!\n");
+        }
+    } else {
+        if (strcmp(escolha, "impar") == 0) {
+            printf("Voce venceu!\n");
+        } else {
+            printf("Voce perdeu!\n");
+        }
+    }
+
+    return 0;
 }
